@@ -35,6 +35,7 @@ class ZoomableImage extends React.Component {
       <img
         onWheel={this.zoom}
         src={Drake}
+        alt=""
         style={{
           position: 'absolute',
           left: `${this.state.x}px`,
