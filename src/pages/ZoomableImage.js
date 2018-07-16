@@ -29,11 +29,24 @@ class ZoomableImage extends React.Component {
   mousePositionRelativeToImage(event) {
     const imageHeight = this.state.width * this.state.aspectRatio
 
+    const mouseOffsetX = event.clientX
+    const mouseOffsetY = event.clientY
+    const mouseXPercent = event.clientX / this.state.width
+    const mouseYPercent = event.clientY / imageHeight
+
+    const oldWidth = this.state.width
+    const oldHeight = this.state.width * this.state.aspectRatio
+
+    const mouseOffsetXRelToImg = mouseOffsetX - this.state.x
+    const mouseOffsetYRelToImg = mouseOffsetY - this.state.y
+    const mouseXPercentRelToImg = mouseXPercent - (this.state.x / oldWidth)
+    const mouseYPercentRelToImg = mouseYPercent - (this.state.y / oldHeight)
+
     return {
-      mouseOffsetX: event.clientX,
-      mouseOffsetY: event.clientY,
-      mouseXPercent: event.clientX / this.state.width,
-      mouseYPercent: event.clientY / imageHeight,
+      mouseOffsetX: mouseOffsetXRelToImg,
+      mouseOffsetY: mouseOffsetYRelToImg,
+      mouseXPercent: mouseXPercentRelToImg,
+      mouseYPercent: mouseYPercentRelToImg,
     }
   }
 
@@ -41,10 +54,7 @@ class ZoomableImage extends React.Component {
     const {mouseOffsetX, mouseOffsetY, mouseXPercent, mouseYPercent} =
       this.mousePositionRelativeToImage(event)
 
-    const oldWidth = this.state.width
-    const oldHeight = this.state.width * this.state.aspectRatio
-
-    const newWidth = oldWidth + event.deltaY
+    const newWidth = this.state.width + event.deltaY
     const newHeight = newWidth * this.state.aspectRatio
 
     const newXDiff = (mouseXPercent * newWidth) - mouseOffsetX
@@ -52,19 +62,6 @@ class ZoomableImage extends React.Component {
 
     const newX = this.state.x - newXDiff
     const newY = this.state.y - newYDiff
-
-    console.group()
-    console.log(`oldWidth: ${oldWidth}`)
-    console.log(`oldHeight: ${oldHeight}`)
-    console.log(`mouseOffsetX: ${mouseOffsetX}`)
-    console.log(`mouseOffsetY: ${mouseOffsetY}`)
-    console.log(`newWidth: ${newWidth}`)
-    console.log(`newHeight: ${newHeight}`)
-    console.log(`newXDiff: ${newXDiff}`)
-    console.log(`newYDiff: ${newYDiff}`)
-    console.log(`newX: ${newX}`)
-    console.log(`newY: ${newY}`)
-    console.groupEnd()
 
     this.setState({
       width: newWidth,
