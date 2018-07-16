@@ -1,5 +1,5 @@
 import React from "react"
-import Drake from "../images/Drake.jpg"
+import Image from "../images/Image.jpg"
 
 class ZoomableImage extends React.Component {
   constructor(props) {
@@ -78,7 +78,7 @@ class ZoomableImage extends React.Component {
         onWheel={this.zoom}
         onLoad={this.imageLoaded}
         ref={this.image}
-        src={Drake}
+        src={Image}
         alt=""
         style={{
           position: 'absolute',
