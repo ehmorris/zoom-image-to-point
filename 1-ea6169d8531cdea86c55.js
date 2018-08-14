@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{206:function(a){a.exports={pages:[{componentChunkName:"component---src-pages-index-js",jsonName:"index",path:"/"},{componentChunkName:"component---src-pages-zoomable-image-js",jsonName:"zoomable-image-a5a",path:"/ZoomableImage/"}],dataPaths:{"zoomable-image-a5a":"972/path---zoomable-image-a-5-a-dfc-NZuapzHg3X9TaN1iIixfv1W23E",index:"173/path---index-6a9-NZuapzHg3X9TaN1iIixfv1W23E","dev-404-page-5f9":"920/path---dev-404-page-5-f-9-fab-NZuapzHg3X9TaN1iIixfv1W23E"}}}}]);
+//# sourceMappingURL=1-ea6169d8531cdea86c55.js.map
